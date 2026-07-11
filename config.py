@@ -15,3 +15,6 @@ key_to_note_palette = {"C":['C','D','E','F','G', 'A', 'B'],
                        "F#m":['F#','G#','A','B','C#', 'D', 'E'], 
                        "C#m":['C#','D#','E','F#','G#', 'A', 'B'], 
                        "G#m":['G#','A#','B','C#','D#', 'E', 'F#'] }
+melody_octave_weights = {4: 60, 5: 40}
+chord_octave_weights = {3:70, 4: 30}
+bass_octave_weights = {2: 80, 3: 20}
