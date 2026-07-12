@@ -20,10 +20,13 @@ key = kgen.key_gen(perlin_value=pnoise[0])
 note_palette = config.key_to_note_palette[key]
 
 # Obtain the initial chord octave
-initial_chord_octave = octave_engine.octave_engine(seed=seed, component="chord")
+OE = octave_engine.Octave_Engine(seed=seed, component="chord")
+initial_chord_octave = OE.next_octave()
 
 
 # Obtain the initial chord
 CE = chord_engine.Chord_Engine(seed=seed, note_palette=note_palette)
 initial_chord = CE.next_chord()
+
+
 
