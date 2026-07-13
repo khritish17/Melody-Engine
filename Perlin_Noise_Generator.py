@@ -6,7 +6,7 @@ class Perlin_Noise_Generator:
     def __int__(self):
         pass
     
-    def perlin_noise(self, length = 10, seed = 1):
+    def perlin_noise(self, length, seed):
         output = []
         rng = random.Random(seed)
         start = rng.uniform(0.01, 1000)

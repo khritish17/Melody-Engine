@@ -21,3 +21,13 @@ bass_octave_weights = {2: 80, 3: 20}
 
 chord_weights = {1: ["", 30], 2: ["m", 7], 3:["m", 2], 4:["", 20],
                  5: ["", 25], 6: ["m", 15], 7: ["dim", 1]}
+
+rhythm_weights = {4: 5, 2:20, 1: 50, 0.5:25} # [key = beats, value = weight]  initial weights of the rhythm
+
+# rhythm_perlin_influencer:  key = class, value = [perlin lf range, perlin rt range, whole X (4), half X (2), quarter X (1), eighth X (0.5)]
+rhythm_perlin_influencer = {1: [0.00, 0.20, 2.0, 1.8, 0.9, 0.5],
+                            2: [0.20, 0.40, 1.6, 1.4, 1.0, 0.8],
+                            3: [0.40, 0.60, 1.0, 1.0, 1.0, 1.0],
+                            4: [0.60, 0.80, 0.7, 0.9, 1.2, 1.4],
+                            5: [0.80, 1.00, 0.4, 0.7, 0.3, 1.8]} 
+
