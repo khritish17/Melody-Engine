@@ -31,3 +31,22 @@ rhythm_perlin_influencer = {1: [0.00, 0.20, 2.0, 1.8, 0.9, 0.5],
                             4: [0.60, 0.80, 0.7, 0.9, 1.2, 1.4],
                             5: [0.80, 1.00, 0.4, 0.7, 0.3, 1.8]} 
 
+# chord_influence_weights
+chord_influence_meldoy_weights = {0: 50, 2:30, 4:20} # root (0 index) = 50, third(2 index) = 30, fifth (4 index) = 20
+
+# melody_movement_weights
+melody_movements_weights = {-3: [-1, -0.18, 2], -2:[-0.18, -0.10, 10], -1:[-0.10, -0.03, 25],
+                            0:[-0.03, 0.03, 10],
+                            1:[0.03, 0.10, 35], 2:[0.10, 0.18, 15], 3:[0.18, 1, 3]}
+
+# melody_perlin_multiplier
+melody_perlin_multiplier = {
+    "preferred" : 1.5,
+    "related": 1.2,
+    "opposite":0.6}
+
+# melody chord multiplier
+melody_chord_multiplier = {
+    "root": 1.3,
+    "third": 1.2,
+    "fifth": 1.1 }
