@@ -4,7 +4,8 @@ import sys
 
 # all the packages required for the project: Melody Engine
 packages = [
-    "noise"
+    "noise",
+    "pretty_midi"
 ]
 
 print("Upgrading pip...")

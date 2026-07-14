@@ -5,7 +5,13 @@ import octave_engine
 import chord_engine
 import rhythm_engine
 import melody_engine
+import midi_generation
 
+# Instruments
+
+melody_instrument_program = 0 # Instrument program number for melody
+chord_instrument_program = 48 # Instrument program number for chord
+bass_instrument_program = 32 # Instrument program number for bass
 
 # The global seed value
 seed = 1 
@@ -95,6 +101,17 @@ print(chord_track)
 print("--Bass--")
 print(bass_track)
 
+print("--melody--midi--")
+melody_midi_object = midi_generation.convert_melody_to_MIDI_data(melody_track=melody_track, melody_instrument_program=melody_instrument_program)
+print(melody_midi_object.notes)
+
+print("--chord--midi--")
+chord_midi_object = midi_generation.convert_chord_to_MIDI_data(chord_track=chord_track, chord_instrument_program=chord_instrument_program)
+print(chord_midi_object.notes)
+
+print("--bass--midi--")
+bass_midi_object = midi_generation.convert_bass_to_MIDI_data(bass_track=bass_track, bass_instrument_program=bass_instrument_program)
+print(bass_midi_object.notes)
 
     
 
