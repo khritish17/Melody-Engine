@@ -25,7 +25,7 @@ def convert_melody_to_MIDI_data(melody_track, melody_instrument_program):
 def convert_chord_to_MIDI_data(chord_track, chord_instrument_program):
     chord = pretty_midi.Instrument(program=chord_instrument_program)
     start_time = 0
-    velocity = 90
+    velocity = 70
     for root, third, fifth, octave, duration in chord_track:
         end_time = start_time + duration
         root_pitch = note_to_midi_pitch(note=root, octave=octave)
@@ -52,7 +52,7 @@ def convert_chord_to_MIDI_data(chord_track, chord_instrument_program):
 def convert_bass_to_MIDI_data(bass_track, bass_instrument_program):
     bass = pretty_midi.Instrument(program=bass_instrument_program)
     start_time = 0
-    velocity = 90
+    velocity = 50
     for root, octave, duration in bass_track:
         end_time = start_time + duration
         root_pitch = note_to_midi_pitch(note=root, octave=octave)
