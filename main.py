@@ -19,16 +19,16 @@ soundfont = "assets/soundfonts/GeneralUser-GS/GeneralUser-GS.sf2"
 wav_file = "output/song.wav"
 
 # The global seed value
-seed = 1 
+seed =  1
 
 # Time Signature
 time_sginature = [4,4] # time signature = 4/4
 
 # Tempo = Beats per minute
-tempo = 80
+tempo = 140
 
 # Measure count
-measure_count = 30
+measure_count = 25
 
 # each measure can contain time_signature[0] beats and each time_signature[0] in worst can be filled by 'time_signature[0]/0.5' eighth beat
 base_perlin_length = measure_count * time_sginature[0] * 2 
@@ -103,7 +103,7 @@ for measure in range(measure_count):
 
 midi_generation.convert_melody_to_MIDI_data(melody_track=melody_track, melody_instrument_program=melody_instrument_program, velocity = 90)
 
-midi_generation.convert_chord_to_MIDI_data(chord_track=chord_track, chord_instrument_program=chord_instrument_program, velocity=80)
+midi_generation.convert_chord_to_MIDI_data(chord_track=chord_track, chord_instrument_program=chord_instrument_program, velocity=45)
 
 midi_generation.convert_bass_to_MIDI_data(bass_track=bass_track, bass_instrument_program=bass_instrument_program, velocity=50)
 
