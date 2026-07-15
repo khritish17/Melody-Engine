@@ -3,26 +3,38 @@ import sys
 import shutil
 import os
 import gdown
+import zipfile
 
 
 # downloading soundfont assets
 def download_soundfont(url):
     os.makedirs("assets/soundfonts", exist_ok=True)
 
-    output = "assets/soundfonts/GeneralUser GS.sf2"
+    sf2_file = "assets/soundfonts/GeneralUser-GS/GeneralUser-GS.sf2" 
+    zip_file = "assets/soundfonts/GeneralUserGS.zip"
 
-    if os.path.exists(output):
+    if os.path.exists(sf2_file):
         print("GeneralUser GS already exists.")
         return
 
     print("Downloading GeneralUser GS...")
     gdown.download(
         url=url,
-        output=output,
-        quiet=False,
+        output=zip_file,
+        quiet=False
     )
 
-    print("Download complete.")
+    print("Extracting SoundFont...")
+
+    with zipfile.ZipFile(zip_file, "r") as z:
+        z.extractall("assets/soundfonts")
+
+    os.remove(zip_file)
+
+    if os.path.exists(sf2_file):
+        print("SoundFont installed successfully.")
+    else:
+        print("ERROR: Could not find 'GeneralUser GS.sf2' after extraction.")
 
 
 

@@ -6,12 +6,17 @@ import chord_engine
 import rhythm_engine
 import melody_engine
 import midi_generation
+import synthesizer
 
 # Instruments
 
 melody_instrument_program = 0 # Instrument program number for melody
 chord_instrument_program = 48 # Instrument program number for chord
 bass_instrument_program = 32 # Instrument program number for bass
+
+midi_file = "output/song.mid"
+soundfont = "assets/soundfonts/GeneralUser-GS/GeneralUser-GS.sf2"
+wav_file = "output/song.wav"
 
 # The global seed value
 seed = 1 
@@ -20,10 +25,10 @@ seed = 1
 time_sginature = [4,4] # time signature = 4/4
 
 # Tempo = Beats per minute
-tempo = 120
+tempo = 80
 
 # Measure count
-measure_count = 3
+measure_count = 30
 
 # each measure can contain time_signature[0] beats and each time_signature[0] in worst can be filled by 'time_signature[0]/0.5' eighth beat
 base_perlin_length = measure_count * time_sginature[0] * 2 
@@ -94,26 +99,19 @@ for measure in range(measure_count):
     bass_octave = OBE.next_octave()
     bass_track.append([root_note, bass_octave, total_duration])
 
-print("--Melody--")
-print(melody_track)
-print("--Chord--")
-print(chord_track)
-print("--Bass--")
-print(bass_track)
 
-print("--melody--midi--")
-melody_midi_object = midi_generation.convert_melody_to_MIDI_data(melody_track=melody_track, melody_instrument_program=melody_instrument_program)
-print(melody_midi_object.notes)
 
-print("--chord--midi--")
-chord_midi_object = midi_generation.convert_chord_to_MIDI_data(chord_track=chord_track, chord_instrument_program=chord_instrument_program)
-print(chord_midi_object.notes)
+midi_generation.convert_melody_to_MIDI_data(melody_track=melody_track, melody_instrument_program=melody_instrument_program, velocity = 90)
 
-print("--bass--midi--")
-bass_midi_object = midi_generation.convert_bass_to_MIDI_data(bass_track=bass_track, bass_instrument_program=bass_instrument_program)
-print(bass_midi_object.notes)
+midi_generation.convert_chord_to_MIDI_data(chord_track=chord_track, chord_instrument_program=chord_instrument_program, velocity=80)
 
-    
+midi_generation.convert_bass_to_MIDI_data(bass_track=bass_track, bass_instrument_program=bass_instrument_program, velocity=50)
+
+midi_generation.save_midi(filename=midi_file)
+
+# Generate the wav files
+synthesizer.generate_wav(midi_file=midi_file, soundfont=soundfont, wav_file=wav_file)
+
 
 
 

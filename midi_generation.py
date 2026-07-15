@@ -1,4 +1,4 @@
-import config, pretty_midi
+import config, pretty_midi, os
 
 midi = pretty_midi.PrettyMIDI()
 
@@ -7,10 +7,9 @@ def note_to_midi_pitch(note, octave):
     midi_pitch = 12 * (octave + 1) + semitone
     return midi_pitch
 
-def convert_melody_to_MIDI_data(melody_track, melody_instrument_program):
+def convert_melody_to_MIDI_data(melody_track, melody_instrument_program, velocity):
     melody = pretty_midi.Instrument(program=melody_instrument_program)
     start_time = 0
-    velocity = 90
     for note, octave, duration in melody_track:
         end_time = start_time + duration
         pitch = note_to_midi_pitch(note=note, octave=octave)
@@ -20,12 +19,12 @@ def convert_melody_to_MIDI_data(melody_track, melody_instrument_program):
                                      end=end_time)
         start_time = end_time
         melody.notes.append(midi_note)
-    return melody
+    midi.instruments.append(melody)
+    #return melody
 
-def convert_chord_to_MIDI_data(chord_track, chord_instrument_program):
+def convert_chord_to_MIDI_data(chord_track, chord_instrument_program, velocity):
     chord = pretty_midi.Instrument(program=chord_instrument_program)
     start_time = 0
-    velocity = 70
     for root, third, fifth, octave, duration in chord_track:
         end_time = start_time + duration
         root_pitch = note_to_midi_pitch(note=root, octave=octave)
@@ -47,12 +46,12 @@ def convert_chord_to_MIDI_data(chord_track, chord_instrument_program):
         chord.notes.append(root_midi)
         chord.notes.append(third_midi)
         chord.notes.append(fifth_midi)
-    return chord 
+    midi.instruments.append(chord)
+    #return chord 
 
-def convert_bass_to_MIDI_data(bass_track, bass_instrument_program):
+def convert_bass_to_MIDI_data(bass_track, bass_instrument_program, velocity):
     bass = pretty_midi.Instrument(program=bass_instrument_program)
     start_time = 0
-    velocity = 50
     for root, octave, duration in bass_track:
         end_time = start_time + duration
         root_pitch = note_to_midi_pitch(note=root, octave=octave)
@@ -62,10 +61,11 @@ def convert_bass_to_MIDI_data(bass_track, bass_instrument_program):
                                      end=end_time)
         start_time = end_time
         bass.notes.append(root_midi)
-    return bass 
+    midi.instruments.append(bass)
+    #return bass 
 
+def save_midi(filename="output/song.mid"):
+    os.makedirs("output", exist_ok=True)
+    midi.write(filename)
 
-
-# melody_track = [['D', 4, 1.0], ['E', 4, 0.5], ['F#', 4, 0.5], ['E', 4, 0.5], ['D', 4, 0.5], ['C#', 5, 0.5], ['C#', 5, 0.5], ['D', 4, 0.5], ['B', 5, 0.5], ['G', 5, 0.5], ['A', 5, 0.5]]
-# convert_melody_to_MIDI_data(melody_track=melody_track, melody_instrument_program=0)
 
