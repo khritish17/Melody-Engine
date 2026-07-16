@@ -11,9 +11,8 @@ class Perlin_Noise_Generator:
         rng = random.Random(seed)
         start = rng.uniform(0.01, 1000)
         step = 0.05
-        
         for _ in range(length):
-            perlin_value = noise.pnoise1(start, base = seed) 
+            perlin_value = noise.pnoise1(start, base = seed)
             normalized_value = round((perlin_value + 1)/2, 4)
             output.append(normalized_value)
             start += step

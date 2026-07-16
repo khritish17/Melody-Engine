@@ -8,6 +8,8 @@ import melody_engine
 import midi_generation
 import synthesizer
 
+
+
 # Instruments
 
 melody_instrument_program = 0 # Instrument program number for melody
@@ -19,7 +21,7 @@ soundfont = "assets/soundfonts/GeneralUser-GS/GeneralUser-GS.sf2"
 wav_file = "output/song.wav"
 
 # The global seed value
-seed =  1
+seed =  502593
 
 # Time Signature
 time_sginature = [4,4] # time signature = 4/4

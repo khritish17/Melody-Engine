@@ -7,9 +7,8 @@ def note_to_midi_pitch(note, octave):
     midi_pitch = 12 * (octave + 1) + semitone
     return midi_pitch
 
-def convert_melody_to_MIDI_data(melody_track, melody_instrument_program, velocity):
+def convert_melody_to_MIDI_data(melody_track, melody_instrument_program, velocity, start_time = 0):
     melody = pretty_midi.Instrument(program=melody_instrument_program)
-    start_time = 0
     for note, octave, duration in melody_track:
         end_time = start_time + duration
         pitch = note_to_midi_pitch(note=note, octave=octave)
@@ -22,9 +21,8 @@ def convert_melody_to_MIDI_data(melody_track, melody_instrument_program, velocit
     midi.instruments.append(melody)
     #return melody
 
-def convert_chord_to_MIDI_data(chord_track, chord_instrument_program, velocity):
+def convert_chord_to_MIDI_data(chord_track, chord_instrument_program, velocity, start_time = 0):
     chord = pretty_midi.Instrument(program=chord_instrument_program)
-    start_time = 0
     for root, third, fifth, octave, duration in chord_track:
         end_time = start_time + duration
         root_pitch = note_to_midi_pitch(note=root, octave=octave)
@@ -49,9 +47,8 @@ def convert_chord_to_MIDI_data(chord_track, chord_instrument_program, velocity):
     midi.instruments.append(chord)
     #return chord 
 
-def convert_bass_to_MIDI_data(bass_track, bass_instrument_program, velocity):
+def convert_bass_to_MIDI_data(bass_track, bass_instrument_program, velocity, start_time = 0):
     bass = pretty_midi.Instrument(program=bass_instrument_program)
-    start_time = 0
     for root, octave, duration in bass_track:
         end_time = start_time + duration
         root_pitch = note_to_midi_pitch(note=root, octave=octave)
