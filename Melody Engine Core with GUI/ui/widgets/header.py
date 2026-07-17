@@ -60,6 +60,7 @@ def title_design():
 def information_design():
     return ft.Row(
         spacing=8,
+        alignment=ft.MainAxisAlignment.SPACE_AROUND,
         vertical_alignment=ft.CrossAxisAlignment.CENTER,
         controls=[
             ft.Icon(
@@ -73,6 +74,7 @@ def information_design():
                 weight=ft.FontWeight.BOLD,
                 color=theme.regular_text_color,
             ),
+            ft.Container(width=7),
             ft.Icon(
                 ft.Icons.RADIO_BUTTON_CHECKED_OUTLINED,
                 size=18,
@@ -84,6 +86,7 @@ def information_design():
                 weight=ft.FontWeight.BOLD,
                 color=theme.regular_text_color,
             ),
+            ft.Container(width=7),
             ft.Icon(
                 ft.Icons.CIRCLE,
                 size=10,
