@@ -1,0 +1,118 @@
+import flet as ft
+from ui import theme
+
+
+def header_ui():
+    return ft.Row(
+        controls=[
+            ft.Container(expand=True, content=title_design(),),
+            ft.Container(expand=True,
+                         content=ft.Row(
+                            controls=[
+                                information_design()
+                                ],
+                            alignment=ft.MainAxisAlignment.CENTER,
+                ),
+            ),
+            ft.Container( expand=True,
+                        content=ft.Row(
+                            controls=[
+                                about_section()
+                                ],
+                        alignment=ft.MainAxisAlignment.END,
+                ),
+            ),
+        ]
+    )
+
+
+def title_design():
+    return ft.Row(
+        spacing=12,
+        vertical_alignment=ft.CrossAxisAlignment.CENTER,
+        controls=[
+            ft.Icon(
+                ft.Icons.MUSIC_NOTE_ROUNDED,
+                size=55,
+                color="#AC38EB",
+            ),
+            ft.Column(
+                spacing=2,
+                controls=[
+                    ft.Text(
+                        "Melody Engine",
+                        size=25,
+                        weight=ft.FontWeight.BOLD,
+                        color=theme.title_text_color,
+                    ),
+                    ft.Text(
+                        "Procedural Music Generator | © Diagonals.lab 2026",
+                        size=13,
+                        weight=ft.FontWeight.W_600,
+                        color=theme.regular_text_color,
+                    ),
+                ],
+            ),
+        ],
+    )
+
+
+def information_design():
+    return ft.Row(
+        spacing=8,
+        vertical_alignment=ft.CrossAxisAlignment.CENTER,
+        controls=[
+            ft.Icon(
+                ft.Icons.AUTO_AWESOME,
+                size=18,
+                color="#AC38EB",
+            ),
+            ft.Text(
+                "Perlin Noise",
+                size=15,
+                weight=ft.FontWeight.BOLD,
+                color=theme.regular_text_color,
+            ),
+            ft.Icon(
+                ft.Icons.RADIO_BUTTON_CHECKED_OUTLINED,
+                size=18,
+                color="#8A6CFF",
+            ),
+            ft.Text(
+                "Procedural",
+                size=15,
+                weight=ft.FontWeight.BOLD,
+                color=theme.regular_text_color,
+            ),
+            ft.Icon(
+                ft.Icons.CIRCLE,
+                size=10,
+                color="#42BC8A",
+            ),
+            ft.Text(
+                "Ready",
+                size=15,
+                weight=ft.FontWeight.BOLD,
+                color=theme.regular_text_color,
+            ),
+        ],
+    )
+
+
+def about_section():
+    return ft.Row(
+        spacing=6,
+        vertical_alignment=ft.CrossAxisAlignment.CENTER,
+        controls=[
+            ft.Icon(
+                ft.Icons.INFO_OUTLINE,
+                size=20,
+                color=theme.regular_text_color,
+            ),
+            ft.Text(
+                "About",
+                size=20,
+                color=theme.regular_text_color,
+            ),
+        ],
+    )

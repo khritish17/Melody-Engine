@@ -76,7 +76,8 @@ packages = [
     "noise",
     "pretty_midi",
     "pyfluidsynth",
-    "gdown"
+    "gdown",
+    "flet"
 ]
 
 print("Upgrading pip...")
