@@ -100,7 +100,7 @@ class Music_Generator:
         # Generate the wav files
         synthesizer.generate_wav(midi_file=self.midi_file, soundfont=self.soundfont, wav_file=self.wav_file)
 
-MG = Music_Generator(seed=1, tempo=110, measure_count=25)
+MG = Music_Generator(seed=1, tempo=120, measure_count=25)
 MG.configure_instruments(melody_instruments=[[0, 110, 0]],
                          chord_instruments=[[48, 45, 0]],
                          bass_instruments=[[32, 50, 0]])

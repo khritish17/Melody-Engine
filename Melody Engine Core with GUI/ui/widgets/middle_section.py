@@ -1,6 +1,6 @@
 import flet as ft
 from ui import theme
-from ui.widgets import left_portion
+from ui.widgets import left_portion, right_portion
 
 def middle_section_ui():
     return ft.Container(
@@ -17,7 +17,7 @@ def middle_section_ui():
                 # right portion of the middle section
                 ft.Container(
                     expand = True,
-                    content = left_portion.left_portion_ui()
+                    content = right_portion.right_portion_ui()
                 ),
                 #ft.Text("Right portion", color=theme.regular_text_color),
             ]

@@ -5,6 +5,9 @@ class AppState:
         self.measure_count = 8
 
         self.melody_instruments = []
+        self.confirmed_melody_instruments = []
         self.chord_instruments = []
+        self.confirmed_chord_instruments = []
         self.bass_instruments = []
+        self.confirmed_bass_instruments = []
 state = AppState()
