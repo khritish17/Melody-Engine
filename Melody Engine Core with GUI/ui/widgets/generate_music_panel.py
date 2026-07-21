@@ -2,6 +2,7 @@ import flet as ft
 from ui import theme
 from ui.state import state
 import music_generator
+import time
 
 def generate_music_panel():
     return ft.Container(
@@ -22,13 +23,13 @@ def generate_music_panel():
         content=ft.Column(
             expand= True,
             controls=[
-                ft.Row(expand=True, controls=[generate_music_button()]),
+                ft.Row(expand=True, controls=[generate_button]),
                 ft.Row(expand = True, controls=[download_wav_button(), download_midi_button()])
             ]
         )
     )
 
-def generate_music_clicked():
+def generate_music_clicked(e):
     print("Generating music")
     seed = state.seed
     tempo = state.tempo
@@ -46,8 +47,9 @@ def generate_music_clicked():
     print(f"Melody:{melody_instruments}\nChord: {chord_instruments}\nbass:{bass_instruments}")
     print("Music Generated")
 
-def generate_music_button():
-    return ft.FilledButton(
+
+
+generate_button = ft.FilledButton(
         #width=1000,
         height=50,
         expand=True,
@@ -57,6 +59,19 @@ def generate_music_button():
         style=ft.ButtonStyle( shape=ft.RoundedRectangleBorder(radius=10),),
         on_click=generate_music_clicked
     )
+
+# def generate_music_button():
+    
+#     return ft.FilledButton(
+#         #width=1000,
+#         height=50,
+#         expand=True,
+#         bgcolor= "#863BF2",
+#         icon=ft.Icon(icon=ft.Icons.AUTO_AWESOME, color="#F2F2F2"),
+#         content= ft.Text("Generate Music",  color= "#F2F2F2",weight=ft.FontWeight.BOLD),
+#         style=ft.ButtonStyle( shape=ft.RoundedRectangleBorder(radius=10),),
+#         on_click=generate_music_clicked
+#     )
 
 def download_wav_button():
     return ft.OutlinedButton(
