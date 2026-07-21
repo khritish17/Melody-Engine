@@ -2,6 +2,7 @@ import config, pretty_midi, os
 
 midi = pretty_midi.PrettyMIDI()
 
+
 def note_to_midi_pitch(note, octave):
     semitone = config.note_to_semitone[note]
     midi_pitch = 12 * (octave + 1) + semitone
