@@ -125,7 +125,7 @@ def velocity_panel(instrument_config):
         e.page.update()
 
     slider = ft.Slider(
-        value=90,
+        value=instrument_config.velocity,
         min=0,
         max=127,
         divisions=127,
