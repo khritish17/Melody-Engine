@@ -192,7 +192,10 @@ def audio_buttons_tray():
 ellapsed_time = "--:--"
 total_time = "--:--"
 
-progress_slider = ft.Slider(expand=True, value = 0, min=0, max = 0, divisions=1000, active_color="#5D64F8")
+def progress_slider_changed(e):
+    player.set_time(int(e.control.value))
+
+progress_slider = ft.Slider(expand=True, value = 0, min=0, max = 0, divisions=None, active_color="#5D64F8", on_change=progress_slider_changed)
 def ms_sec_str(ms):
     total_sec = ms//1000
     min = total_sec//60

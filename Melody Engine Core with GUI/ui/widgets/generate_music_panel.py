@@ -3,6 +3,10 @@ from ui import theme
 from ui.state import state
 import music_generator
 import time
+import shutil
+
+page_ref = None
+file_picker = None
 
 def generate_music_panel():
     return ft.Container(
@@ -73,6 +77,29 @@ generate_button = ft.FilledButton(
 #         on_click=generate_music_clicked
 #     )
 
+def init(page):
+    global page_ref, file_picker
+
+    page_ref = page
+    file_picker = ft.FilePicker(on_result=save_result)
+
+    page.overlay.append(file_picker)
+    page.update()
+
+
+def save_result(e):
+    if e.path:
+        shutil.copy("output/song.wav", e.path)
+
+
+def download_wav(e):
+    file_picker.save_file(
+        dialog_title="Save WAV",
+        file_name="song.wav",
+        allowed_extensions=["wav"],
+    )
+
+
 def download_wav_button():
     return ft.OutlinedButton(
         height=50,
@@ -91,7 +118,7 @@ def download_wav_button():
             side=ft.BorderSide(width=0.5,color="#6DB992"),
             shape=ft.RoundedRectangleBorder(radius= 10),
         ),
-        #on_click=add_instument_clicked
+        # on_click=download_wav
     )
 
 def download_midi_button():
