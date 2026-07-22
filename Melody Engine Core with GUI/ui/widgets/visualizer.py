@@ -99,7 +99,7 @@ def audio_panel():
     return ft.Column(
         controls=[
             visualizer(),
-
+            ft.Container(height=30),
             audio_time_line_tray(),
             audio_buttons_tray(),
         ]
@@ -161,9 +161,17 @@ colors = [
     "#C5F354", "#DFED47", "#F4E73C", "#F6C934",
     "#F5A22C", "#FF8531", "#FF673D", "#F23E5D"
 ]
-for i in range(len(colors)):
-    bars.append(ft.Container(expand=True, height=random.randint(50, 250), border_radius=5, bgcolor=colors[i]))
+def change_animation():
+    for i in range(len(colors)):
+        bars.append(ft.Container(expand=True, height=random.randint(60, 150), border_radius=5, bgcolor=colors[i], 
+                                shadow=ft.BoxShadow(
+                                    blur_radius=8,
+                                    color=colors[i],)
+                                )
+                    )
+
 def visualizer():
+    change_animation()
     return ft.Container(expand = True,
                         content=ft.Row(
                             alignment=ft.MainAxisAlignment.CENTER,
