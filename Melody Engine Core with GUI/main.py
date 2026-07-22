@@ -1,9 +1,11 @@
 import flet
 
 from ui.home_page import HomePage
+from ui.widgets import visualizer
 
 
 def main(page: flet.Page):
+    visualizer.page_ref = page
     page.title = "Melody Engine"
 
     page.window.width = 1400

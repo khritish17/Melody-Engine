@@ -77,7 +77,8 @@ packages = [
     "pretty_midi",
     "pyfluidsynth",
     "gdown",
-    "flet"
+    "flet",
+    "python-vlc"
 ]
 
 print("Upgrading pip...")
