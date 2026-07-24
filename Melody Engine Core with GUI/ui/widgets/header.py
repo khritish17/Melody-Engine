@@ -56,7 +56,17 @@ def title_design():
         ],
     )
 
-
+status_text = ft.Text(
+                "Waiting",
+                size=15,
+                weight=ft.FontWeight.BOLD,
+                color=theme.regular_text_color,
+            )
+status_icon = ft.Icon(
+                ft.Icons.CIRCLE,
+                size=10,
+                color="#FF0579",
+            )
 def information_design():
     return ft.Row(
         spacing=8,
@@ -87,35 +97,20 @@ def information_design():
                 color=theme.regular_text_color,
             ),
             ft.Container(width=7),
-            ft.Icon(
-                ft.Icons.CIRCLE,
-                size=10,
-                color="#42BC8A",
-            ),
-            ft.Text(
-                "Ready",
-                size=15,
-                weight=ft.FontWeight.BOLD,
-                color=theme.regular_text_color,
-            ),
+
+            status_icon,
+            status_text,
         ],
     )
 
 
 def about_section():
+    img_width = 180
+    img_height = int((507/1636)*img_width) 
     return ft.Row(
         spacing=6,
         vertical_alignment=ft.CrossAxisAlignment.CENTER,
         controls=[
-            ft.Icon(
-                ft.Icons.INFO_OUTLINE,
-                size=20,
-                color=theme.regular_text_color,
-            ),
-            ft.Text(
-                "About",
-                size=20,
-                color=theme.regular_text_color,
-            ),
+            ft.Image(src="assets/img/diagonals.png",height=img_height, width=img_width), # h/v = 1636/507
         ],
     )

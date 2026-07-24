@@ -173,6 +173,11 @@ def play_button_clicked(e):
 
 play_button = ft.IconButton(icon=ft.Icons.PLAY_ARROW, icon_color="white", bgcolor="#5D64F8", icon_size=20,on_click=play_button_clicked)
 
+
+def volume_changed(e):
+    player.audio_set_volume(int(e.control.value))
+
+volume_slider = ft.Container(padding=0, content=ft.Slider(value = 60, min=0, max = 100, divisions=100, active_color="#5D64F8",width=150, on_change=volume_changed),)
 def audio_buttons_tray():
     return ft.Container(
         content=ft.Row(
@@ -183,7 +188,7 @@ def audio_buttons_tray():
                 play_button,
                 ft.Container(width=20),
                 ft.Icon(icon=ft.Icons.VOLUME_UP),
-                ft.Container(padding=0, content=ft.Slider(value = 60, min=0, max = 100, divisions=100, active_color="#5D64F8",width=150),),
+                volume_slider,
             ]
         )
     )
@@ -277,7 +282,7 @@ def create_visualizer():
         bars.append(
             ft.Container(
                 expand=True,
-                height=random.randint(60, 150),
+                height=30,
                 border_radius=5,
                 bgcolor=color,
                 animate=ft.Animation(100, ft.AnimationCurve.EASE_OUT),

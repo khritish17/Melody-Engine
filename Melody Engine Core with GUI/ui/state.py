@@ -10,4 +10,5 @@ class AppState:
         self.confirmed_chord_instruments = []
         self.bass_instruments = []
         self.confirmed_bass_instruments = []
+        self.status = False
 state = AppState()

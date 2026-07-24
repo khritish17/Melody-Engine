@@ -1,6 +1,7 @@
 import flet as ft
 from ui import theme
 from ui.state import state
+from ui.widgets import header
 import music_generator
 import time
 import shutil
@@ -35,6 +36,9 @@ def generate_music_panel():
 
 def generate_music_clicked(e):
     print("Generating music")
+    header.status_text.value = "Music Generated"
+    header.status_icon.icon = ft.Icons.CIRCLE
+    header.status_icon.color = "#42BC8A"
     seed = state.seed
     tempo = state.tempo
     measure_count = state.measure_count
